@@ -4,12 +4,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const ticketRoutes = require('./routes/tickets.js');
 const userRoutes = require("./routes/user.js");
-
+const cors = require('cors')
 
 //create express app
 const app = express();
 
 // middleware
+app.use(
+    cors({
+        origin: "*"
+    })
+)
 app.use((req, res, next) => {
     console.log(req.path, req.method)
     next()
